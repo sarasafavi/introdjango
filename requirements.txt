@@ -1,0 +1,4 @@
+Django==1.7c2
+argparse==1.2.1
+django-bootstrap3==4.8.2
+wsgiref==0.1.2
