@@ -1,3 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+def recipe_list(request):
+    return HttpResponse("This will be a list of all recipes.")
