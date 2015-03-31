@@ -5,6 +5,7 @@ from recipes.forms import RecipeForm
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from recipes.serializers import RecipeSerializer
 
 def recipe_list(request):
@@ -83,3 +84,10 @@ def api_recipe_detail(request, id):
     if request.method == 'GET':
         serializer = RecipeSerializer(recipe)
         return Response(serializer.data)
+
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+        'recipes': reverse('api-recipe-list', request=request, format=format),
+    })
