@@ -2,6 +2,9 @@ from django.shortcuts import render, HttpResponse, redirect
 from recipes.models import Recipe
 from django.http import Http404
 from recipes.forms import RecipeForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from recipes.serializers import RecipeSerializer
 
 def recipe_list(request):
     """Pull the current list of all recipes and return them.
@@ -44,3 +47,15 @@ def addrecipe(request):
     else:
         form = RecipeForm()
     return render(request, 'addrecipe.html', { 'form': form})
+
+
+@api_view(['GET', 'POST'])
+def api_recipe_list(request):
+    """
+    API view that allows a list of recipes to be viewed or a new recipe to be
+    created
+    """
+    if request.method == 'GET':
+        recipes = Recipe.objects.all()
+        serializer = RecipeSerializer(recipes, many=True)
+        return Response(serializer.data)
