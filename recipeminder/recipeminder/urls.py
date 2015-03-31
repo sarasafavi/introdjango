@@ -17,3 +17,8 @@ urlpatterns += format_suffix_patterns(
         url(r'^api/recipes/$', views.api_recipe_list, name='api-recipe-list'),
     ]
 )
+
+# login & logout URLs for browsable API root
+urlpatterns += [
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+        ]
