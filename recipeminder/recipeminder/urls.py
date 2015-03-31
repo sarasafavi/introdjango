@@ -11,9 +11,11 @@ urlpatterns = patterns('',
     url(r'^recipes/', include('recipes.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
+
 # API urls
 urlpatterns += format_suffix_patterns(
     [
+        url(r'^api/$', views.api_root),
         url(r'^api/recipes/$', views.api_recipe_list, name='api-recipe-list'),
         url(r'^api/recipes/(?P<id>[0-9]+)$', views.api_recipe_detail, name='api-recipe-detail'),
     ]
