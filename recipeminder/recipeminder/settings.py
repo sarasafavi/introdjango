@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipes',
-    'bootstrap3'
+    'bootstrap3',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,5 +88,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 BOOTSTRAP3 = {
-    'theme_url': 'http://bootswatch.com/amelia/bootstrap.min.css'
+    'theme_url': 'http://static.sarasafavi.com/css/amelia_bootstrap.css'
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+    # this special permissions class from Django REST framework will
+    # allow our app's registered users to create new data, while
+    # anonymous users will only be able to read existing data
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ]
 }
