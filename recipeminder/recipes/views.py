@@ -1,9 +1,8 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 from recipes.models import Recipe
 
 
 def recipe_list(request):
     recipelist = Recipe.objects.all()
-    names = '<li>'.join([r.name for r in recipelist])
-    output = '<ul><li>{}</ul>'.format(names)
-    return HttpResponse(output)
+    context = {'recipelist': recipelist}
+    return render(request, 'recipelist.html', context)
