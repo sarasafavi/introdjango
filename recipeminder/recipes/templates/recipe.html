@@ -1,17 +1,20 @@
-<html>
-	<head>
-		<title>{{ recipe.name }}</title>
-
-		{% load bootstrap3 %}
-		{% bootstrap_css %}
-		{% bootstrap_javascript %}
-
-	</head>
-
-	<body>
-		Name: {{ recipe.name }} <br>
-		Servings: {{ recipe.servings }} <br>
-		Ingredients: {{ recipe.ingredients }} <br>
-		Instructions: {{ recipe.instructions }} <br>
-	</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+{{ recipe.name }}
+{% endblock %}
+{% block maincontent %}
+<h1>{{ recipe.name }}</h1>
+Created on: {{ recipe.created }} <p />
+Servings: {{ recipe.servings }}
+<hr>
+<p class="lead">
+	Description: {{ recipe.description|linebreaks }} 
+</p>
+<p class="lead">
+	Ingredients: {{ recipe.ingredients|linebreaks }} 
+</p>
+<hr>
+<p class="lead">
+	Instructions: {{ recipe.instructions|linebreaks }} 
+</p>	
+{% endblock %}

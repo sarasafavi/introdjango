@@ -1,7 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+Add a Recipe
+{% endblock %}
 {% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
 
+{% block maincontent %}
 <h1>Add a New Recipe</h1>
 
 <form action="/recipes/addrecipe/" method="post" class="form">
@@ -13,3 +16,5 @@
 	</button>
 {% endbuttons %}
 </form>
+
+{% endblock %}
