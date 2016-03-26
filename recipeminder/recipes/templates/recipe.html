@@ -1,7 +1,13 @@
 <html>
 	<head>
 		<title>{{ recipe.name }}</title>
+
+		{% load bootstrap3 %}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+
 	</head>
+
 	<body>
 		Name: {{ recipe.name }} <br>
 		Servings: {{ recipe.servings }} <br>

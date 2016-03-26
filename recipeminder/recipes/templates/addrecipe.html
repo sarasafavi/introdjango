@@ -1,7 +1,15 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <h1>Add a New Recipe</h1>
 
-<form action="/recipes/addrecipe/" method="post">
+<form action="/recipes/addrecipe/" method="post" class="form">
 {% csrf_token %}
-{{ form.as_p }} 
-<input type="submit" value="Create Recipe" />
+{% bootstrap_form form layout='inline' %}
+{% buttons %}
+	<button type="submit" class="btn btn-primary">
+		Create Recipe
+	</button>
+{% endbuttons %}
 </form>
